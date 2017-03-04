@@ -179,8 +179,10 @@ open class GravityTagCloudView : UIView {
                          completionHandler: ((_ finished: Bool, _ numLabelAdded: Int) -> Void)! = nil) {
         
         if cleanBeforeGenerate {
-        labels.forEach { $0.removeFromSuperview() }
-        self.labels.removeAll()
+            if labels.count > 0 {
+                labels.forEach { $0.removeFromSuperview() }
+                self.labels.removeAll()
+            }
         }
 
         if self.labelSizeType == .weighted {
@@ -191,7 +193,7 @@ open class GravityTagCloudView : UIView {
             let diff: Int = maxWeight - minWeight
 
             var cnt = 0
-            for i in offset...titleWeights.count {
+            for i in offset...titleWeights.count-1 {
                 let titleWeight = titleWeights[i]
                 ///TODO: throw
 //                assert((titleWeight is [AnyHashable: Any]))

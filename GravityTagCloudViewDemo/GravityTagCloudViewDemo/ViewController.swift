@@ -18,7 +18,6 @@ class ViewController: UIViewController {
         gravityTagCloudView.labelSizeType = .weighted
         
         /* Test 1: happy case */
-        /*
          gravityTagCloudView.titleWeights = [["title":"elephant", "weight":10],
          ["title":"cow", "weight":7],
          ["title":"horse", "weight":7],
@@ -28,12 +27,9 @@ class ViewController: UIViewController {
          ["title":"mouse", "weight":1],
          ]
          
-         gravityTagCloudView.generate(completionHandler:{ finish in
-         print("finish=\(finish)")
-         })
-         */
+         gravityTagCloudView.generate()
         
-        /* Test 2: a lot of labels, expect can not put them all in the view (203 labels added in iPhone 5) */
+        /* Test 2: adding a lot of labels in 3 calls, expect can not put them all in the view (~203 labels added in iPhone 5) */
         
         var array = [[String:Any]]()
         

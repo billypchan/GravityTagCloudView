@@ -15,9 +15,12 @@ gravityTagCloudView.titleWeights = [["title":"elephant", "weight":10],
                                     ["title":"dog", "weight":5],
                                     ["title":"cat", "weight":3],
                                     ["title":"rat", "weight":1],
-                                    ["title":"mouse", "weight":1],
+                                    ["title":"mouse", "weight":1]
                                     ]
-gravityTagCloudView.generate()
+gravityTagCloudView.generate(labelCreatedHandler:{ label in
+    /* label added = 4~24 */
+    print("label added:\(label)")
+})
 
 
 let container = UIView(frame: CGRect(x: 0, y: 0, width: 360, height: 200))
