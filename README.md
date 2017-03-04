@@ -1,7 +1,16 @@
 # GravityTagCloudView
 A tag cloud view with gravity for iOS. It is a rewritten version of https://github.com/zhangao0086/DKTagCloudView in swift 3 and more options are included.
 
+Fill some bugs in the iPhone SE screen:
+
+![PNG](https://raw.githubusercontent.com/billypchan/DKTagCloudView/master/tagsOfbugs.png)
+
+Playground example:
+
+![PNG](https://raw.githubusercontent.com/billypchan/DKTagCloudView/master/playground.png)
+
 ///TODO: gif
+
 ///TODO: example for no gravity, random font size
 
 
