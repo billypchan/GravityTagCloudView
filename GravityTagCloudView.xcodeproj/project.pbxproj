@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE9227AC1E62FA2800C34B34 /* GravityTagCloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE9227A21E62FA2800C34B34 /* GravityTagCloudView.framework */; };
-		FE9227B11E62FA2800C34B34 /* GravityTagCloudViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9227B01E62FA2800C34B34 /* GravityTagCloudViewTests.swift */; };
-		FE9227B31E62FA2800C34B34 /* GravityTagCloudView.h in Headers */ = {isa = PBXBuildFile; fileRef = FE9227A51E62FA2800C34B34 /* GravityTagCloudView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FE9227BD1E62FA6400C34B34 /* GravityTagCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9227BC1E62FA6400C34B34 /* GravityTagCloudView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +22,8 @@
 
 /* Begin PBXFileReference section */
 		FE9227A21E62FA2800C34B34 /* GravityTagCloudView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GravityTagCloudView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE9227A51E62FA2800C34B34 /* GravityTagCloudView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GravityTagCloudView.h; sourceTree = "<group>"; };
-		FE9227A61E62FA2800C34B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE9227AB1E62FA2800C34B34 /* GravityTagCloudViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GravityTagCloudViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE9227B01E62FA2800C34B34 /* GravityTagCloudViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravityTagCloudViewTests.swift; sourceTree = "<group>"; };
-		FE9227B21E62FA2800C34B34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE9227BC1E62FA6400C34B34 /* GravityTagCloudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GravityTagCloudView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE9227AC1E62FA2800C34B34 /* GravityTagCloudView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				FE9227A41E62FA2800C34B34 /* GravityTagCloudView */,
-				FE9227AF1E62FA2800C34B34 /* GravityTagCloudViewTests */,
 				FE9227A31E62FA2800C34B34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,19 +64,9 @@
 		FE9227A41E62FA2800C34B34 /* GravityTagCloudView */ = {
 			isa = PBXGroup;
 			children = (
-				FE9227A51E62FA2800C34B34 /* GravityTagCloudView.h */,
-				FE9227A61E62FA2800C34B34 /* Info.plist */,
+				FE9227BC1E62FA6400C34B34 /* GravityTagCloudView.swift */,
 			);
 			path = GravityTagCloudView;
-			sourceTree = "<group>";
-		};
-		FE9227AF1E62FA2800C34B34 /* GravityTagCloudViewTests */ = {
-			isa = PBXGroup;
-			children = (
-				FE9227B01E62FA2800C34B34 /* GravityTagCloudViewTests.swift */,
-				FE9227B21E62FA2800C34B34 /* Info.plist */,
-			);
-			path = GravityTagCloudViewTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,7 +76,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE9227B31E62FA2800C34B34 /* GravityTagCloudView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +131,7 @@
 					FE9227A11E62FA2700C34B34 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = G5GZ5MPEHS;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					FE9227AA1E62FA2800C34B34 = {
@@ -198,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE9227BD1E62FA6400C34B34 /* GravityTagCloudView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +189,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE9227B11E62FA2800C34B34 /* GravityTagCloudViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +305,7 @@
 		FE9227B71E62FA2800C34B34 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = G5GZ5MPEHS;
@@ -334,6 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.GravityTagCloudView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -341,6 +326,7 @@
 		FE9227B81E62FA2800C34B34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = G5GZ5MPEHS;
@@ -360,6 +346,7 @@
 		FE9227BA1E62FA2800C34B34 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = G5GZ5MPEHS;
 				INFOPLIST_FILE = GravityTagCloudViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -372,6 +359,7 @@
 		FE9227BB1E62FA2800C34B34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = G5GZ5MPEHS;
 				INFOPLIST_FILE = GravityTagCloudViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -400,6 +388,7 @@
 				FE9227B81E62FA2800C34B34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FE9227B91E62FA2800C34B34 /* Build configuration list for PBXNativeTarget "GravityTagCloudViewTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +397,7 @@
 				FE9227BB1E62FA2800C34B34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
