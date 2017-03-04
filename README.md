@@ -3,7 +3,7 @@ A tag cloud view with gravity for iOS. It is a rewritten version of https://gith
 
 Fill some bugs in the iPhone SE screen:
 
-![PNG](https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs.png){ width: 200px; }
+<img src="https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs.png" width="200" height="400" />
 
 Playground example:
 
