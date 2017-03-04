@@ -61,30 +61,30 @@ gravityTagCloudView.tagClickBlock = { title, tag -> Void in
 
 ``` Swift
 
-    /**
-     *  Label size option. Defautls to random.
-     */
-    public var labelSizeType : LabelSizeType = .random
+/**
+ *  Label size option. Defautls to random.
+ */
+public var labelSizeType : LabelSizeType = .random
 
-    /**
-     *  Gravity enabled?
-     */
-    public var isGravity : Bool = true
+/**
+ *  Gravity enabled?
+ */
+public var isGravity : Bool = true
 
-    /**
-     *  Min font size. Defautls to 14.
-     */
-    public var minFontSize : Float = 14
-    
-    /**
-     *  Max font size. Defaults to 60.
-     */
-    public var maxFontSize : Float = 60
-    
-    /**
-     *  Random text colors with default list
-     */
-    public var randomColors = [UIColor.black, UIColor.cyan, UIColor.purple, UIColor.orange, UIColor.red, UIColor.yellow, UIColor.lightGray, UIColor.gray, UIColor.green]
+/**
+ *  Min font size. Defautls to 14.
+ */
+public var minFontSize : Float = 14
+
+/**
+ *  Max font size. Defaults to 60.
+ */
+public var maxFontSize : Float = 60
+
+/**
+ *  Random text colors with default list
+ */
+public var randomColors = [UIColor.black, UIColor.cyan, UIColor.purple, UIColor.orange, UIColor.red, UIColor.yellow, UIColor.lightGray, UIColor.gray, UIColor.green]
 ```
 
 ## License
