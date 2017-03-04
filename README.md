@@ -3,11 +3,10 @@ A tag cloud view with gravity for iOS. It is a rewritten version of https://gith
 
 Fill some bugs in the iPhone SE screen:
 
-![PNG](https://raw.githubusercontent.com/billypchan/DKTagCloudView/master/doc/tagsOfbugs.png)
-
+![PNG](https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs.png)
 Playground example:
 
-![PNG](https://raw.githubusercontent.com/billypchan/DKTagCloudView/master/doc/playground.png)
+![PNG](https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/playground.png)
 
 ///TODO: gif
 
