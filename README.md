@@ -7,6 +7,12 @@ Fill some bugs in the iPhone SE screen:
 
 Playground example:
 
+Play with random font size:
+
+![PNG](https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/randomFontSize.png)
+
+Play with weighted font size and fill the entire view with tags:
+
 ![PNG](https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/playground.png)
 
 ///TODO: gif
