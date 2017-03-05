@@ -15,9 +15,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gravityTagCloudView.labelSizeType = .weighted
         
+        /* Test 0: happy case with random size*/
+        gravityTagCloudView.labelSizeType = .random
+        gravityTagCloudView.titles = ["elephant", "cow", "horse", "dog", "cat", "rat"]
+        gravityTagCloudView.generate(labelCreatedHandler:{ label in
+            /* label added = 4~24 */
+            print("label added:\(label)")
+        })
+
+        return
+            
         /* Test 1: happy case */
+        gravityTagCloudView.labelSizeType = .weighted
          gravityTagCloudView.titleWeights = [["title":"elephant", "weight":10],
          ["title":"cow", "weight":7],
          ["title":"horse", "weight":7],

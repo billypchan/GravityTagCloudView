@@ -8,6 +8,24 @@ let gravityTagCloudView = GravityTagCloudView()
 
 gravityTagCloudView.frame = CGRect(x: 0, y: 0, width: 360, height: 200)
 
+let container = UIView(frame: CGRect(x: 0, y: 0, width: 360, height: 200))
+
+/* Test case: tag cloud with 7 tags with weighted size*/
+container.addSubview(gravityTagCloudView) ///TODO: gravity not work? Please look at the demo project!
+
+PlaygroundPage.current.liveView = container
+PlaygroundPage.current.needsIndefiniteExecution = true
+
+/* Test case: tag cloud with random size */
+gravityTagCloudView.labelSizeType = .random
+gravityTagCloudView.titles = ["elephant", "cow", "horse", "dog", "cat", "rat"]
+gravityTagCloudView.generate(labelCreatedHandler:{ label in
+    /* label added = 4~24 */
+    print("label added:\(label)")
+})
+
+container
+
 gravityTagCloudView.labelSizeType = .weighted
 gravityTagCloudView.titleWeights = [["title":"elephant", "weight":10],
                                     ["title":"cow", "weight":7],
@@ -22,18 +40,10 @@ gravityTagCloudView.generate(labelCreatedHandler:{ label in
     print("label added:\(label)")
 })
 
-
-let container = UIView(frame: CGRect(x: 0, y: 0, width: 360, height: 200))
-
-/* Test 1: tag cloud with 7 tags */
-container.addSubview(gravityTagCloudView) ///TODO: gravity not work? Please look at the demo project!
+container
 
 
-PlaygroundPage.current.liveView = container
-PlaygroundPage.current.needsIndefiniteExecution = true
-
-
-/* Test 1: try to create a tag cloud with 100 tags */
+/* Test case: try to create a tag cloud with 100 tags */
 var array = [[String:Any]]()
 for i in 1...100 {
     array.append(["title":"bug\(i)", "weight":100])
@@ -45,7 +55,7 @@ gravityTagCloudView.generate(completionHandler:{ finish, numLabelAdded in
     let log = "finish=\(finish), label added = \(numLabelAdded)"
 })
 
-/*~ 71~74 tags in the view */
+/* try to fill the view with bugs! ~ 71~74 tags in the view */
 container
 
 

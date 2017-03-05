@@ -15,9 +15,14 @@ open class GravityTagCloudView : UIView {
     var labels : [UILabel]! = []
 
     /**
-     *  [String] or [(String, Float)]
+     *   [[String, String] or [String, Float]]
      */
     public var titleWeights = [[String:Any]]()
+    
+    /**
+     *  [String]
+     */
+    public var titles = [String]()
 
     public enum LabelSizeType {
         case random
@@ -140,6 +145,15 @@ open class GravityTagCloudView : UIView {
         return UIFont.systemFont(ofSize: CGFloat(ratio * (self.maxFontSize - self.minFontSize) + self.minFontSize))
     }
     
+    
+    func randomBetweenNumbers(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
+        return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
+    }
+    
+    func randomFont() -> UIFont {
+        return UIFont.systemFont(ofSize: randomBetweenNumbers(firstNum: CGFloat(self.maxFontSize), secondNum: CGFloat(self.minFontSize)))
+    }
+    
     func randomFrame(for label: UILabel) -> CGRect {
         label.sizeToFit()
         let maxWidth: CGFloat = self.bounds.size.width - label.bounds.size.width
@@ -185,25 +199,18 @@ open class GravityTagCloudView : UIView {
             }
         }
 
-        if self.labelSizeType == .weighted {
-
-            let maxWeight = (titleWeights.max { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
-            let minWeight = (titleWeights.min { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
-
-            let diff: Int = maxWeight - minWeight
-
+        switch self.labelSizeType{
+        case .random:
             var cnt = 0
-            for i in offset...titleWeights.count-1 {
-                let titleWeight = titleWeights[i]
-                ///TODO: throw
-//                assert((titleWeight is [AnyHashable: Any]))
+            for i in offset...titles.count-1 {
+                let title = titles[i]
+                ///TODO: complete with false
+                //                assert((titleWeight is [AnyHashable: Any]))
                 let label = UILabel()
                 label.tag = i
-                label.text = (titleWeight["title"] as! String)
+                label.text = title
                 label.textColor = self.randomColor()
-                let delta: Int = (titleWeight["weight"] as! Int) - minWeight
-                let ratio: Float = Float(delta) / Float(diff)
-                label.font = self.sizeRatioFont(ratio)
+                label.font = randomFont()
                 
                 var cntTry = 0
                 repeat {
@@ -233,8 +240,66 @@ open class GravityTagCloudView : UIView {
                 
                 cnt += 1
             }
-
+            
             completionHandler?(true, cnt)
+            
+        case .weighted:
+            let maxWeight = (titleWeights.max { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
+            let minWeight = (titleWeights.min { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
+            
+            let diff: Int = maxWeight - minWeight
+            
+            var cnt = 0
+            for i in offset...titleWeights.count-1 {
+                let titleWeight = titleWeights[i]
+                ///TODO: throw
+                //                assert((titleWeight is [AnyHashable: Any]))
+                let label = UILabel()
+                label.tag = i
+                label.text = (titleWeight["title"] as! String)
+                label.textColor = self.randomColor()
+                let delta: Int = (titleWeight["weight"] as! Int) - minWeight
+                let ratio: Float = Float(delta) / Float(diff)
+                label.font = self.sizeRatioFont(ratio)
+                
+                addLabelToView(label, counter:cnt, labelCreatedHandler: labelCreatedHandler, completionHandler:completionHandler)
+                
+                cnt += 1
+            }
+            
+            completionHandler?(true, cnt)
+        }
+    }
+    
+    func addLabelToView(_ label: UILabel,
+                        counter:Int,
+                        labelCreatedHandler: ((_ label: UILabel) -> Void)! = nil,
+                        completionHandler: ((_ finished: Bool, _ numLabelAdded: Int) -> Void)! = nil
+        ) {
+        var cntTry = 0
+        repeat {
+            label.frame = self.randomFrame(for: label)
+            
+            
+            if cntTry > 10000 {
+                completionHandler?(false, counter)
+                return
+            }
+            cntTry += 1
+        } while self.frameIntersects(label.frame)
+        
+        self.labels.append(label)
+        self.addSubview(label)
+        let tagGestue = UITapGestureRecognizer(target: self, action: #selector(self.handleGesture))
+        label.addGestureRecognizer(tagGestue)
+        label.isUserInteractionEnabled = true
+        
+        if let _  = labelCreatedHandler {
+            labelCreatedHandler(label)
+        }
+        
+        if isGravity {
+            addBoxToBehaviors(label)
         }
     }
 
