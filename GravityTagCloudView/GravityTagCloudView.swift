@@ -57,7 +57,7 @@ open class GravityTagCloudView : UIView {
     /**
      *  Callback. Index start at 0.
      */
-    public var tagClickBlock: ((_ title: String, _ index: Int) -> Void)? = nil
+    public var tagClickBlock: ((_ label: UILabel, _ title: String, _ index: Int) -> Void)? = nil
     
     var animator:UIDynamicAnimator? = nil;
     let gravity = UIGravityBehavior()
@@ -176,7 +176,7 @@ open class GravityTagCloudView : UIView {
     func handleGesture(_ gestureRecognizer: UIGestureRecognizer) {
         let label: UILabel? = (gestureRecognizer.view as? UILabel)
         if (self.tagClickBlock != nil) {
-            self.tagClickBlock!((label?.text)!, (label?.tag)!)
+            self.tagClickBlock!(label!, (label?.text)!, (label?.tag)!)
         }
     }
     
@@ -202,46 +202,28 @@ open class GravityTagCloudView : UIView {
         switch self.labelSizeType{
         case .random:
             var cnt = 0
+            var ret = true
+            ///TODO: complete with false
+            //                assert((titleWeight is [AnyHashable: Any]))
+
             for i in offset...titles.count-1 {
                 let title = titles[i]
-                ///TODO: complete with false
-                //                assert((titleWeight is [AnyHashable: Any]))
                 let label = UILabel()
                 label.tag = i
                 label.text = title
                 label.textColor = self.randomColor()
                 label.font = randomFont()
                 
-                var cntTry = 0
-                repeat {
-                    label.frame = self.randomFrame(for: label)
-                    
-                    
-                    if cntTry > 10000 {
-                        completionHandler?(false, cnt)
-                        return
-                    }
-                    cntTry += 1
-                } while self.frameIntersects(label.frame)
+                ret = addLabelToView(label, counter:cnt, labelCreatedHandler: labelCreatedHandler)
                 
-                self.labels.append(label)
-                self.addSubview(label)
-                let tagGestue = UITapGestureRecognizer(target: self, action: #selector(self.handleGesture))
-                label.addGestureRecognizer(tagGestue)
-                label.isUserInteractionEnabled = true
-                
-                if let _  = labelCreatedHandler {
-                    labelCreatedHandler(label)
-                }
-                
-                if isGravity {
-                    addBoxToBehaviors(label)
+                if ret == false {
+                    break
                 }
                 
                 cnt += 1
             }
             
-            completionHandler?(true, cnt)
+            completionHandler?(ret, cnt)
             
         case .weighted:
             let maxWeight = (titleWeights.max { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
@@ -250,6 +232,7 @@ open class GravityTagCloudView : UIView {
             let diff: Int = maxWeight - minWeight
             
             var cnt = 0
+            var ret = true
             for i in offset...titleWeights.count-1 {
                 let titleWeight = titleWeights[i]
                 ///TODO: throw
@@ -262,28 +245,30 @@ open class GravityTagCloudView : UIView {
                 let ratio: Float = Float(delta) / Float(diff)
                 label.font = self.sizeRatioFont(ratio)
                 
-                addLabelToView(label, counter:cnt, labelCreatedHandler: labelCreatedHandler, completionHandler:completionHandler)
+                ret = addLabelToView(label, counter:cnt, labelCreatedHandler: labelCreatedHandler)
+                
+                if ret == false {
+                    break
+                }
                 
                 cnt += 1
             }
             
-            completionHandler?(true, cnt)
+            completionHandler?(ret, cnt)
         }
     }
     
     func addLabelToView(_ label: UILabel,
                         counter:Int,
-                        labelCreatedHandler: ((_ label: UILabel) -> Void)! = nil,
-                        completionHandler: ((_ finished: Bool, _ numLabelAdded: Int) -> Void)! = nil
-        ) {
+                        labelCreatedHandler: ((_ label: UILabel) -> Void)! = nil
+        ) -> Bool {
         var cntTry = 0
         repeat {
             label.frame = self.randomFrame(for: label)
             
             
             if cntTry > 10000 {
-                completionHandler?(false, counter)
-                return
+                return false
             }
             cntTry += 1
         } while self.frameIntersects(label.frame)
@@ -301,6 +286,8 @@ open class GravityTagCloudView : UIView {
         if isGravity {
             addBoxToBehaviors(label)
         }
+
+        return true
     }
 
     //MARK: - UIDynamicAllocator

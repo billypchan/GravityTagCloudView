@@ -15,29 +15,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /* Test tag gesture */
         
-        /* Test 0: happy case with random size*/
-        gravityTagCloudView.labelSizeType = .random
-        gravityTagCloudView.titles = ["elephant", "cow", "horse", "dog", "cat", "rat"]
-        gravityTagCloudView.generate(labelCreatedHandler:{ label in
-            /* label added = 4~24 */
-            print("label added:\(label)")
-        })
+        gravityTagCloudView.tagClickBlock = { label, title, tag -> Void in
+            label.textColor = UIColor.darkGray
+        }
 
-        return
-            
+        /* Test 0: happy case with random size*/
+//        testRandomFontSize()
+        
         /* Test 1: happy case */
-        gravityTagCloudView.labelSizeType = .weighted
-         gravityTagCloudView.titleWeights = [["title":"elephant", "weight":10],
-         ["title":"cow", "weight":7],
-         ["title":"horse", "weight":7],
-         ["title":"dog", "weight":5],
-         ["title":"cat", "weight":3],
-         ["title":"rat", "weight":1],
-         ["title":"mouse", "weight":1],
-         ]
-         
-         gravityTagCloudView.generate()
+//        testWeightFontSize()
         
         /* Test 2: adding a lot of labels in 3 calls, expect can not put them all in the view (~203 labels added in iPhone 5) */
         
@@ -47,6 +35,7 @@ class ViewController: UIViewController {
             array.append(["title":"bug\(i)", "weight":100])
         }
         
+        gravityTagCloudView.labelSizeType = .weighted
         gravityTagCloudView.titleWeights = array
         
         var totalAdded = 0
@@ -56,12 +45,12 @@ class ViewController: UIViewController {
             /* fill the tag after the tags fell*/
             totalAdded += numLabelAdded
             self.delayWithSeconds(10) {
-                self.gravityTagCloudView.generate(totalAdded, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
+                self.gravityTagCloudView.generate(totalAdded, cleanBeforeGenerate:false, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
                     /* label added = 43~55 */
                     print("finish=\(finish), label added = \(numLabelAdded)")
                     totalAdded += numLabelAdded
                     self.delayWithSeconds(10) {
-                        self.gravityTagCloudView.generate(totalAdded, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
+                        self.gravityTagCloudView.generate(totalAdded, cleanBeforeGenerate:false, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
                             /* label added = 4~24 */
                             print("finish=\(finish), label added = \(numLabelAdded)")
                         })
@@ -85,6 +74,28 @@ class ViewController: UIViewController {
      }
      */
     
+    func testRandomFontSize() {
+        gravityTagCloudView.labelSizeType = .random
+        gravityTagCloudView.titles = ["elephant", "cow", "horse", "dog", "cat", "rat"]
+        gravityTagCloudView.generate(labelCreatedHandler:{ label in
+            /* label added = 4~24 */
+            //            print("label added:\(label)")
+        })
+    }
     
+    func testWeightFontSize() {
+        gravityTagCloudView.labelSizeType = .weighted
+        gravityTagCloudView.titleWeights = [["title":"elephant", "weight":10],
+                                            ["title":"cow", "weight":7],
+                                            ["title":"horse", "weight":7],
+                                            ["title":"dog", "weight":5],
+                                            ["title":"cat", "weight":3],
+                                            ["title":"rat", "weight":1],
+                                            ["title":"mouse", "weight":1],
+        ]
+        
+        gravityTagCloudView.generate()
+    }
+
 }
 
