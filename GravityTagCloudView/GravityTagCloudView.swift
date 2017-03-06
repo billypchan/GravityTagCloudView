@@ -13,7 +13,7 @@ import CoreMotion
 open class GravityTagCloudView : UIView {
     
     var labels : [UILabel]! = []
-
+    
     /**
      *   [[String, String] or [String, Float]]
      */
@@ -23,7 +23,7 @@ open class GravityTagCloudView : UIView {
      *  [String]
      */
     public var titles = [String]()
-
+    
     public enum LabelSizeType {
         case random
         case weighted
@@ -33,12 +33,12 @@ open class GravityTagCloudView : UIView {
      *  Label size option. Defautls to random.
      */
     public var labelSizeType : LabelSizeType = .random
-
+    
     /**
      *  Gravity enabled?
      */
     public var isGravity : Bool = true
-
+    
     /**
      *  Min font size. Defautls to 14.
      */
@@ -63,13 +63,13 @@ open class GravityTagCloudView : UIView {
     let gravity = UIGravityBehavior()
     let collider = UICollisionBehavior()
     let itemBehavior = UIDynamicItemBehavior()
-
+    
     //MARK: -  Core Motion
     
     // For getting device motion updates
     let motionQueue = OperationQueue.main
     let motionManager = CMMotionManager()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -80,13 +80,13 @@ open class GravityTagCloudView : UIView {
         super.init(coder: aDecoder)
         setup()
     }
-
+    
     var isSetup = false
     func setup(){
         if !isSetup {
-        self.isUserInteractionEnabled = true
-        motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: motionHandler)
-        createAnimatorStuff()
+            self.isUserInteractionEnabled = true
+            motionManager.startDeviceMotionUpdates(to: motionQueue, withHandler: motionHandler)
+            createAnimatorStuff()
         }
         
         isSetup = true
@@ -97,7 +97,7 @@ open class GravityTagCloudView : UIView {
         
         setup()
     }
-
+    
     func gravityUpdated(motion: CMDeviceMotion?, error: Error?) {
         let grav : CMAcceleration = motion!.gravity;
         
@@ -129,7 +129,7 @@ open class GravityTagCloudView : UIView {
         let v = CGVector(dx: p.x, dy: -p.y)
         gravity.gravityDirection = v;
         
-//        print("\(v)")
+        //        print("\(v)")
     }
     
     lazy var motionHandler : CMDeviceMotionHandler = {
@@ -192,20 +192,26 @@ open class GravityTagCloudView : UIView {
                          labelCreatedHandler: ((_ label: UILabel) -> Void)! = nil,
                          completionHandler: ((_ finished: Bool, _ numLabelAdded: Int) -> Void)! = nil) {
         
+        
         if cleanBeforeGenerate {
             if labels.count > 0 {
                 labels.forEach { $0.removeFromSuperview() }
                 self.labels.removeAll()
             }
         }
-
+        
         switch self.labelSizeType{
         case .random:
+            if offset >= titles.count-1 {
+                completionHandler?(false, -1)
+                return
+            }
+            
             var cnt = 0
             var ret = true
             ///TODO: complete with false
             //                assert((titleWeight is [AnyHashable: Any]))
-
+            
             for i in offset...titles.count-1 {
                 let title = titles[i]
                 let label = UILabel()
@@ -226,6 +232,11 @@ open class GravityTagCloudView : UIView {
             completionHandler?(ret, cnt)
             
         case .weighted:
+            if offset >= titleWeights.count-1 {
+                completionHandler?(false, -1)
+                return
+            }
+            
             let maxWeight = (titleWeights.max { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
             let minWeight = (titleWeights.min { ($0["weight"]as! Int) < ($1["weight"] as! Int)})?["weight"] as! Int
             
@@ -286,10 +297,10 @@ open class GravityTagCloudView : UIView {
         if isGravity {
             addBoxToBehaviors(label)
         }
-
+        
         return true
     }
-
+    
     //MARK: - UIDynamicAllocator
     
     func addBoxToBehaviors(_ box: UIView) {
@@ -297,7 +308,7 @@ open class GravityTagCloudView : UIView {
         collider.addItem(box)
         itemBehavior.addItem(box)
     }
-
+    
     func createAnimatorStuff() {
         animator = UIDynamicAnimator(referenceView:self);
         
