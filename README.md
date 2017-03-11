@@ -30,9 +30,7 @@ Play with weighted font size and fill the entire view with tags:
 Edit your Podfile and add DKTagCloudView, (TODO add to offical pod spec):
 
 ``` bash
-source 'https://github.com/billypchan/BCPodSpecs.git'
-
-pod 'GravityTagCloudView', '~> 0.1.0'
+pod 'GravityTagCloudView', '~> 0.2.0'
 ```
 
 Add `import GravityTagCloudView` to the top of classes that will use it.  
@@ -82,6 +80,7 @@ gravityTagCloudView.tagClickBlock = { title, tag -> Void in
 ``` Swift
 
 /**
+
  *  Label size option. Defautls to random.
  */
 public var labelSizeType : LabelSizeType = .random
