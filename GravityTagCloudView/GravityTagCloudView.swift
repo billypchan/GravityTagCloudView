@@ -6,6 +6,8 @@
 //  Copyright © 2017 chan bill. All rights reserved.
 //
 
+///TODO: show FPS
+
 import Foundation
 import UIKit
 import CoreMotion
