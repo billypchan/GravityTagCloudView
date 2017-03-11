@@ -5,6 +5,7 @@ Fill some bugs in the iPhone SE screen:
 
 <img src="https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs.png" width="200" />
 <img src="https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs_generateThreeTimes.png" width="200" />
+(To measure the performance of UIDynamic, you may include konoma/fps-counter in your project - https://github.com/konoma/fps-counter)
 
 Playground example:
 
