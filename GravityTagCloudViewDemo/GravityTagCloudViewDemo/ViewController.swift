@@ -5,6 +5,7 @@
 //  Created by chan bill on 26/2/2017.
 //  Copyright © 2017 chan bill. All rights reserved.
 //
+//  TODO: create UI for switch between tests
 
 import UIKit
 import GravityTagCloudView
@@ -25,39 +26,10 @@ class ViewController: UIViewController {
 //        testRandomFontSize()
         
         /* Test 1: happy case */
-//        testWeightFontSize()
+        testWeightFontSize()
         
         /* Test 2: adding a lot of labels in 3 calls, expect can not put them all in the view (~203 labels added in iPhone 5) */
-        
-        var array = [[String:Any]]()
-        
-        for i in 1...1000 {
-            array.append(["title":"bug\(i)", "weight":100])
-        }
-        
-        gravityTagCloudView.labelSizeType = .weighted
-        gravityTagCloudView.titleWeights = array
-        
-        var totalAdded = 0
-        /* ~ 196~205 labels added*/
-        gravityTagCloudView.generate(completionHandler:{ finish, numLabelAdded in
-            print("finish=\(finish), label added = \(numLabelAdded)")
-            /* fill the tag after the tags fell*/
-            totalAdded += numLabelAdded
-            self.delayWithSeconds(10) {
-                self.gravityTagCloudView.generate(totalAdded, cleanBeforeGenerate:false, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
-                    /* label added = 43~55 */
-                    print("finish=\(finish), label added = \(numLabelAdded)")
-                    totalAdded += numLabelAdded
-                    self.delayWithSeconds(10) {
-                        self.gravityTagCloudView.generate(totalAdded, cleanBeforeGenerate:false, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
-                            /* label added = 4~24 */
-                            print("finish=\(finish), label added = \(numLabelAdded)")
-                        })
-                    }
-                })
-            }
-        })
+//        testFillTheViewWithLabels()
         
     }
     
@@ -97,5 +69,36 @@ class ViewController: UIViewController {
         gravityTagCloudView.generate()
     }
 
+    func testFillTheViewWithLabels() {
+        var array = [[String:Any]]()
+        
+        for i in 1...1000 {
+            array.append(["title":"bug\(i)", "weight":100])
+        }
+        
+        gravityTagCloudView.labelSizeType = .weighted
+        gravityTagCloudView.titleWeights = array
+        
+        var totalAdded = 0
+        /* ~ 196~205 labels added*/
+        gravityTagCloudView.generate(completionHandler:{ finish, numLabelAdded in
+            print("finish=\(finish), label added = \(numLabelAdded)")
+            /* fill the tag after the tags fell*/
+            totalAdded += numLabelAdded
+            self.delayWithSeconds(10) {
+                self.gravityTagCloudView.generate(totalAdded, cleanBeforeGenerate:false, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
+                    /* label added = 43~55 */
+                    print("finish=\(finish), label added = \(numLabelAdded)")
+                    totalAdded += numLabelAdded
+                    self.delayWithSeconds(10) {
+                        self.gravityTagCloudView.generate(totalAdded, cleanBeforeGenerate:false, labelCreatedHandler:nil, completionHandler:{ finish, numLabelAdded in
+                            /* label added = 4~24 */
+                            print("finish=\(finish), label added = \(numLabelAdded)")
+                        })
+                    }
+                })
+            }
+        })
+    }
 }
 
