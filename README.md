@@ -1,12 +1,14 @@
 # GravityTagCloudView
 A tag cloud view with gravity for iOS. It is a rewritten version of https://github.com/zhangao0086/DKTagCloudView in swift 3 with UIdynamics gravity support (Thanks for this nice tutorial for UI dynamics - https://www.bignerdranch.com/blog/uidynamics-in-swift/).
 
+You may play around GravityTagCloudView on [Apptize](https://appetize.io/app/y16mxjyzgrd9bkh0cq38ac4qng).
+
 Fill some bugs in the iPhone SE screen:
 
 <img src="https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs.png" width="200" />
 <img src="https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/tagsOfbugs_generateThreeTimes.png" width="200" />
 
-(To measure the performance of UIDynamic, you may include konoma/fps-counter in your project - https://github.com/konoma/fps-counter)
+(To measure the performance of UIDynamic, you may include [konoma/fps-counter](https://github.com/konoma/fps-counter) in your project.)
 
 Playground example:
 
