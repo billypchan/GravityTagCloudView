@@ -23,11 +23,6 @@ Play with weighted font size and fill the entire view with tags:
 
 ![PNG](https://raw.githubusercontent.com/billypchan/GravityTagCloudView/master/doc/playground.png)
 
-///TODO: gif
-
-///TODO: example for no gravity, random font size
-
-
 ## How To Get Started
 
 ### Installation with CocoaPods
