@@ -13,6 +13,23 @@ import GravityTagCloudView
 class ViewController: UIViewController {
     @IBOutlet weak var gravityTagCloudView: GravityTagCloudView!
     
+    var isFirstLayoutSubviews = true
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if isFirstLayoutSubviews {
+            /* Test 0: happy case with random size*/
+            //        testRandomFontSize()
+            
+            /* Test 1: happy case */
+            testWeightFontSize()
+            
+            /* Test 2: adding a lot of labels in 3 calls, expect can not put them all in the view (~203 labels added in iPhone 5) */
+            //        testFillTheViewWithLabels()
+        }
+        
+        isFirstLayoutSubviews = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,15 +38,7 @@ class ViewController: UIViewController {
         gravityTagCloudView.tagClickBlock = { label, title, tag -> Void in
             label.textColor = UIColor.darkGray
         }
-
-        /* Test 0: happy case with random size*/
-//        testRandomFontSize()
         
-        /* Test 1: happy case */
-        testWeightFontSize()
-        
-        /* Test 2: adding a lot of labels in 3 calls, expect can not put them all in the view (~203 labels added in iPhone 5) */
-//        testFillTheViewWithLabels()
         
     }
     
@@ -66,9 +75,11 @@ class ViewController: UIViewController {
                                             ["title":"mouse", "weight":1],
         ]
         
-        gravityTagCloudView.generate()
+        gravityTagCloudView.generate(completionHandler:{ finish, numLabelAdded in
+            print("finish=\(finish), label added = \(numLabelAdded)")
+        })
     }
-
+    
     func testFillTheViewWithLabels() {
         var array = [[String:Any]]()
         
