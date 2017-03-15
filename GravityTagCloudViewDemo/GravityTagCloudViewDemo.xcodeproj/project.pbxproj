@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE423D6D1E79B70A00C857CE /* GravityTagCloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE423D6C1E79B70A00C857CE /* GravityTagCloudView.framework */; };
 		FEFFC23E1E63736D0011DE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFFC23D1E63736D0011DE25 /* AppDelegate.swift */; };
 		FEFFC2401E63736D0011DE25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFFC23F1E63736D0011DE25 /* ViewController.swift */; };
 		FEFFC2431E63736D0011DE25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEFFC2411E63736D0011DE25 /* Main.storyboard */; };
 		FEFFC2451E63736D0011DE25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEFFC2441E63736D0011DE25 /* Assets.xcassets */; };
 		FEFFC2481E63736D0011DE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEFFC2461E63736D0011DE25 /* LaunchScreen.storyboard */; };
-		FEFFC2501E6373A20011DE25 /* GravityTagCloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEFFC24F1E6373A20011DE25 /* GravityTagCloudView.framework */; };
-		FEFFC2511E6373A20011DE25 /* GravityTagCloudView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FEFFC24F1E6373A20011DE25 /* GravityTagCloudView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FEFFC2511E6373A20011DE25 /* GravityTagCloudView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -31,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FE423D6C1E79B70A00C857CE /* GravityTagCloudView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GravityTagCloudView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/GravityTagCloudView-cunresxiqadzwwgyyedtgspbchay/Build/Products/Release-iphonesimulator/GravityTagCloudView.framework"; sourceTree = "<group>"; };
 		FEFFC23A1E63736D0011DE25 /* GravityTagCloudViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GravityTagCloudViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEFFC23D1E63736D0011DE25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEFFC23F1E63736D0011DE25 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +37,6 @@
 		FEFFC2441E63736D0011DE25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEFFC2471E63736D0011DE25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEFFC2491E63736D0011DE25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FEFFC24F1E6373A20011DE25 /* GravityTagCloudView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GravityTagCloudView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,19 +44,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEFFC2501E6373A20011DE25 /* GravityTagCloudView.framework in Frameworks */,
+				FE423D6D1E79B70A00C857CE /* GravityTagCloudView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE423D6B1E79B70900C857CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE423D6C1E79B70A00C857CE /* GravityTagCloudView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEFFC2311E63736D0011DE25 = {
 			isa = PBXGroup;
 			children = (
-				FEFFC24F1E6373A20011DE25 /* GravityTagCloudView.framework */,
 				FEFFC23C1E63736D0011DE25 /* GravityTagCloudViewDemo */,
 				FEFFC23B1E63736D0011DE25 /* Products */,
+				FE423D6B1E79B70900C857CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
