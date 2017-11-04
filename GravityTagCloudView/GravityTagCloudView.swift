@@ -109,7 +109,7 @@ open class GravityTagCloudView : UIView {
         
         if error != nil
         {
-            NSLog("\(error)")
+            NSLog("\(String(describing: error))")
         }
         
         // Have to correct for orientation.
@@ -175,7 +175,7 @@ open class GravityTagCloudView : UIView {
         return false
     }
     
-    func handleGesture(_ gestureRecognizer: UIGestureRecognizer) {
+    @objc func handleGesture(_ gestureRecognizer: UIGestureRecognizer) {
         let label: UILabel? = (gestureRecognizer.view as? UILabel)
         if (self.tagClickBlock != nil) {
             self.tagClickBlock!(label!, (label?.text)!, (label?.tag)!)

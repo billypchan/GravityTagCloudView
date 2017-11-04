@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE423D6D1E79B70A00C857CE /* GravityTagCloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE423D6C1E79B70A00C857CE /* GravityTagCloudView.framework */; };
+		EFBF19D31FAC72B20008B10D /* GravityTagCloudView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFBF19D21FAC72340008B10D /* GravityTagCloudView.framework */; };
+		EFBF19D41FAC72B20008B10D /* GravityTagCloudView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EFBF19D21FAC72340008B10D /* GravityTagCloudView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FEFFC23E1E63736D0011DE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFFC23D1E63736D0011DE25 /* AppDelegate.swift */; };
 		FEFFC2401E63736D0011DE25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFFC23F1E63736D0011DE25 /* ViewController.swift */; };
 		FEFFC2431E63736D0011DE25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEFFC2411E63736D0011DE25 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EFBF19D41FAC72B20008B10D /* GravityTagCloudView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -29,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EFBF19D21FAC72340008B10D /* GravityTagCloudView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GravityTagCloudView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE423D6C1E79B70A00C857CE /* GravityTagCloudView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GravityTagCloudView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/GravityTagCloudView-cunresxiqadzwwgyyedtgspbchay/Build/Products/Release-iphonesimulator/GravityTagCloudView.framework"; sourceTree = "<group>"; };
 		FEFFC23A1E63736D0011DE25 /* GravityTagCloudViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GravityTagCloudViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEFFC23D1E63736D0011DE25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE423D6D1E79B70A00C857CE /* GravityTagCloudView.framework in Frameworks */,
+				EFBF19D31FAC72B20008B10D /* GravityTagCloudView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				FE423D6C1E79B70A00C857CE /* GravityTagCloudView.framework */,
+				EFBF19D21FAC72340008B10D /* GravityTagCloudView.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,12 +121,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "chan bill";
 				TargetAttributes = {
 					FEFFC2391E63736D0011DE25 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = G5GZ5MPEHS;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -199,7 +204,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -207,7 +214,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -249,7 +260,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -257,7 +270,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -291,9 +308,10 @@
 				INFOPLIST_FILE = GravityTagCloudViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.GravityTagCloudViewDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = TagCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -305,9 +323,10 @@
 				INFOPLIST_FILE = GravityTagCloudViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.billchan.GravityTagCloudViewDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = TagCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
